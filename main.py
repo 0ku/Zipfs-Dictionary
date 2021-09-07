@@ -7,3 +7,22 @@ stringText = str(f.read())
 
 dictionary = {}
 
+def appendWord(word):
+    global dictionary
+    if word not in dictionary.keys():
+        dictionary[word] = 1
+    else:
+        dictionary[word]+=1
+
+for currentWord in stringText:
+    if currentWord.isnumeric() == False:
+        appendWord(currentWord)
+
+y_axis = []
+x_axis = [x for x in range(1,len(dictionary.keys()))+1]
+
+print(dictionary)
+        
+plt.ylabel('some numbers')
+plt.show()
+
