@@ -1,9 +1,8 @@
 import matplotlib.pyplot as plt
-plt.plot([1,2,3,4,5],[1,1/2,1/3,1/4,1/5])
-nonAlphanumeric = ['[','^','-','.','/',']']
+nonAlphanumeric = ['}','{','[','^','-','.','/',']']
 #opening textFile.txt
 f = open("textFile", "r",encoding="utf-8")
-
+print("running")
 
 stringText = str(f.read()).upper()
 #replacing/removing all non-alphanumeric characters
@@ -24,12 +23,18 @@ for currentWord in wordList:
     if currentWord.isnumeric() == False and currentWord not in nonAlphanumeric:
         appendWord(currentWord)
 
-y_axis = []
-x_axis = [x for x in range(1,len(dictionary.keys())+1)]
-
-#sorting the final dictionary to be ordered and used in graph later
+#sorting the final dictionary
 final = dict(sorted(dictionary.items(), key=lambda item: item[1], reverse=True))
-print(final)
-plt.ylabel('some numbers')
+x_axis = []
+y_axis = []
+
+for a in final.keys():
+    if len(x_axis) == 10:
+        break
+    x_axis.append(a)
+    y_axis.append(final[a])
+
+plt.bar(range(len(y_axis)), y_axis, align='center')
+plt.xticks(range(len(x_axis)), x_axis, size='small')
 plt.show()
 
