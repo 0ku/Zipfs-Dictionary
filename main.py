@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import pandas
 nonAlphanumeric = ['}','{','[','^','-','.','/',']']
 #opening textFile.txt
 f = open("textFile", "r",encoding="utf-8")
@@ -36,5 +37,7 @@ for a in final.keys():
 
 plt.bar(range(len(y_axis)), y_axis, align='center')
 plt.xticks(range(len(x_axis)), x_axis, size='small')
+df = pandas.DataFrame(final.items(), columns=['Word', 'Count'])
+df.to_csv('dictionary.csv')
 plt.show()
 
